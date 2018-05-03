@@ -20,6 +20,23 @@ class PortfoliosController < ApplicationController
         end
     end
 
+    def edit
+        @portfolio_item = Portfolio.find(params[:id])
+    end
+
+    def update
+        @portfolio = Portfolio.find(params[:id])
+
+        respond_to do |format|
+            if @portfolio.update(portfolio_params)
+                format.html { redirect_to portfolios_path, notice: 'Portfolio Item was successfully updated.' }
+            else
+                format.html { render :edit }
+            end
+        end
+    end
+
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def portfolio_params
     params.require(:portfolio).permit(:title, :subtitle, :body)
