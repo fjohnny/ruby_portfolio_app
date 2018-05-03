@@ -25,10 +25,10 @@ class PortfoliosController < ApplicationController
     end
 
     def update
-        @portfolio = Portfolio.find(params[:id])
+        @portfolio_item = Portfolio.find(params[:id])
 
         respond_to do |format|
-            if @portfolio.update(portfolio_params)
+            if @portfolio_item.update(portfolio_params)
                 format.html { redirect_to portfolios_path, notice: 'Portfolio Item was successfully updated.' }
             else
                 format.html { render :edit }
@@ -36,6 +36,10 @@ class PortfoliosController < ApplicationController
         end
     end
 
+    def show
+        @portfolio_item = Portfolio.find(params[:id])
+    
+    end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def portfolio_params
