@@ -1,0 +1,6 @@
+<h1> Show Portfolio Details </h1>
+
+<%= image_tag @portfolio_item.main_image unless @portfolio_item.main_image.nil? %>
+<h2> <%= @portfolio_item.title %> </h2>
+<p> <%= @portfolio_item.subtitle %> </p>
+<p> <%= @portfolio_item.body %> </p>
